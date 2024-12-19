@@ -1,6 +1,6 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include "libft.h"
 
 static	size_t count(char const *s, char c)
 {
@@ -31,7 +31,11 @@ static	char *word_copy(const char *s, size_t start, size_t end)
 	if (!word)
 		return (NULL);
 	while (start < end)
-		word[i++] = s[start++];
+	{
+		word[i] = s[start];
+		i++;
+		start++;
+	}
 	word[i] = '\0';
 	return (word);
 }
@@ -48,7 +52,8 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	start = 0;
 	end = 0;
-	new = malloc((count(s, c) + 1) * sizeof(char *));
+	new = malloc((count(s, c) + 1) * sizeof(char *)); // pourquoi le + 1? 
+	printf("%d", 1);
 	if (!s || !new)
 		return (NULL);
 	while (s[i])
@@ -77,11 +82,11 @@ char	**ft_split(char const *s, char c)
 
 int	main(void)
 {
-	char *test;
+	char *s;
 	char	c;
+	int	i;
+
 	c = ",";
-	test = "a,b,c,d";
-
-	printf("%ls", ft_split(test, c));
-
+	s = "a,b,c,d";
+	ft_split(s, c);
 }
