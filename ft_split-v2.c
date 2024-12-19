@@ -54,7 +54,7 @@ char	**ft_split(char const *s, char c)
 	end = 0;
 	new = malloc((count(s, c) + 1) * sizeof(char *)); // pourquoi le + 1? 
 	printf("%d", 1);
-	if (!s || !new)
+	if (!*s || !new)
 		return (NULL);
 	while (s[i])
 	{
